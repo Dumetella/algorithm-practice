@@ -26,6 +26,7 @@ const input = file.split('\n');
 const list = (input[1]).split(' ').map(x => parseInt(x));
 const n = parseInt(input[2]);
 
+// O(n^2)/2.
 function naive_twoSum(arr, x) {
     for (let i = 0; i < arr.length; i++) {
         for (let j = i + 1; j < arr.length; j++) {
