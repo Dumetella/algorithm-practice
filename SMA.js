@@ -41,7 +41,7 @@ function naive_SMA(array, K) {
     writeStream.end();
 }
 
-//Убрав внутренний цикл, скорость увеличилась в K раз.
+//Если убрать внутренний цикл, то скорость выполнения увеличится в K раз.
 function improved_SMA(array, K) {
     let result = new Array();
     let current_sum = 0;
