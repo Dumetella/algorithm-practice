@@ -37,4 +37,22 @@ function naive_twoSum(arr, x) {
     return ["None"];
 }
 
+function doubleCounter_twoSum(arr, n) {
+    let newArr = arr.slice().sort((a, b) => a - b)
+    let left = 0;
+    let right = newArr.length - 1;
+    while (left < right) {
+        let currentSum = newArr[left] + newArr[right];
+        if (currentSum === n) {
+            return [newArr[left], newArr[right]];
+        }
+        if (currentSum < n) {
+            left += 1;
+        } else {
+            right -= 1;
+        }
+    }
+    return ["None"];
+}
+
 console.log(...twoSum(list, n));
