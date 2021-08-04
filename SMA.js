@@ -21,7 +21,6 @@ const file = fs.readFileSync('input.txt', 'utf-8');
 const input = file.split('\n');
 const writeStream = fs.createWriteStream('output.txt');
 
-const t = parseInt(input[0]);
 const pList = (input[1]).split(' ').map(x => parseInt(x));
 const K = parseInt(input[2]);
 
