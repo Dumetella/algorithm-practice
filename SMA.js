@@ -25,8 +25,8 @@ const t = parseInt(input[0]);
 const pList = (input[1]).split(' ').map(x => parseInt(x));
 const K = parseInt(input[2]);
 
-
-function SMA(array, K) {
+//Такой наивный алгоритм получается со сложностью O(n*k). Он не проходит последние тесты из-за своей медлительности.
+function naive_SMA(array, K) {
     let result = new Array();
     for (let begin = 0; begin <= array.length - K; begin++) {
         let end = begin + K;
@@ -41,4 +41,20 @@ function SMA(array, K) {
     writeStream.end();
 }
 
-SMA(pList, K)
+//Убрав внутренний цикл, скорость увеличилась в K раз.
+function improved_SMA(array, K) {
+    let result = new Array();
+    let current_sum = 0;
+    for (let i = 0; i < K; i++) {
+        current_sum += array[i];
+    }
+    result.push(current_sum / K)
+    for (let j = 0; j < array.length - K; j++) {
+        current_sum -= array[j];
+        current_sum += array[j + K];
+        current_avg = current_sum / K;
+        result.push(current_sum / K)
+    }
+    result.forEach(value => writeStream.write(`${value} `));
+    writeStream.end();
+}
