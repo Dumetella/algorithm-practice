@@ -25,7 +25,7 @@ const t = parseInt(input[0]);
 const pList = (input[1]).split(' ').map(x => parseInt(x));
 const K = parseInt(input[2]);
 
-//Такой наивный алгоритм получается со сложностью O(n*k). Он не проходит последние тесты из-за своей медлительности.
+//Такой наивный алгоритм имеет сложность O(n*k). Он не проходит последние тесты из-за своей медлительности.
 function naive_SMA(array, K) {
     let result = new Array();
     for (let begin = 0; begin <= array.length - K; begin++) {
