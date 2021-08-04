@@ -37,7 +37,7 @@ function naive_twoSum(arr, x) {
     }
     return ["None"];
 }
-
+//
 function doubleCounter_twoSum(arr, n) {
     let newArr = arr.slice().sort((a, b) => a - b)
     let left = 0;
@@ -56,4 +56,19 @@ function doubleCounter_twoSum(arr, n) {
     return ["None"];
 }
 
-console.log(...twoSum(list, n));
+function set_twoSum(arr, n) {
+    let set = new Set();
+    let y;
+    for (let i of arr) {
+        y = n - i;
+        if (set.has(y)) {
+            return [i, y];
+        } else {
+            set.add(i);
+        }
+    }
+    return ["None"];
+}
+
+
+console.log(...set_twoSum(list, n));
