@@ -19,7 +19,6 @@ const fs = require('fs');
 
 const file = fs.readFileSync('input.txt', 'utf-8');
 const input = file.split('\n');
-const writeStream = fs.createWriteStream('output.txt');
 
 const pList = (input[1]).split(' ').map(x => parseInt(x));
 const K = parseInt(input[2]);
@@ -36,8 +35,7 @@ function naive_SMA(array, K) {
         let current_avg = current_sum / K;
         result.push(current_avg);
     }
-    result.forEach(value => writeStream.write(`${value} `));
-    writeStream.end();
+    return result;
 }
 
 //Если убрать внутренний цикл, то скорость выполнения увеличится в K раз.
@@ -52,8 +50,11 @@ function improved_SMA(array, K) {
         current_sum -= array[j];
         current_sum += array[j + K];
         current_avg = current_sum / K;
-        result.push(current_sum / K)
+        result.push(current_sum / K);
     }
-    result.forEach(value => writeStream.write(`${value} `));
-    writeStream.end();
+    return result;
 }
+
+const writeStream = fs.createWriteStream('output.txt');
+improved_SMA(pList, K).forEach(value => writeStream.write(`${value} `));
+writeStream.end();
